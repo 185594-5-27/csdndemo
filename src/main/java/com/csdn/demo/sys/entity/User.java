@@ -1,5 +1,4 @@
 package com.csdn.demo.sys.entity;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -41,6 +40,16 @@ public class User implements UserDetails {
 	private List<UserRole> roles;
 	// 权限集合数据
 	private String roleArray;
+	// 所在分组的集合
+	private OrgGroup orgGroup;
+
+	public OrgGroup getOrgGroup() {
+		return orgGroup;
+	}
+
+	public void setOrgGroup(OrgGroup orgGroup) {
+		this.orgGroup = orgGroup;
+	}
 
 	public String getRoleArray() {
 		return roleArray;
@@ -86,7 +95,7 @@ public class User implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return this.getUserName();
+		return this.getLogin();
 	}
 
 	@Override

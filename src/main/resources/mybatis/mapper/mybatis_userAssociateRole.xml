@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csdn.demo.sys.dao.UserAssociateRoleDao">
+	<resultMap type="com.csdn.demo.sys.entity.UserAssociateRole" id="UserAssociateRoleMap">
+		<result property="userId" column="user_id"/>
+		<result property="roleId" column="role_id"/>
+	</resultMap>
+
+	<!--根据用户的ID来删除用户的权限数据-->
+	<delete id="removeUserRole" parameterType="com.csdn.demo.sys.entity.User">
+		DELETE FROM user_associate_role WHERE user_id=#{id}
+	</delete>
+
+	<!--根据主键获取对象-->
+	<select id="get" parameterType="com.csdn.demo.sys.entity.UserAssociateRole" resultMap="UserAssociateRoleMap">
+		SELECT user_id,role_id FROM user_associate_role 
+		WHERE 
+	</select>
+
+	<!--保存-->
+	<insert id="save" parameterType="com.csdn.demo.sys.entity.UserAssociateRole">
+		INSERT INTO user_associate_role(user_id,role_id)
+		VALUES(#{userId},#{roleId})
+	</insert>
+
+	<!--修改-->
+	<update id="update" parameterType="com.csdn.demo.sys.entity.UserAssociateRole">
+		UPDATE user_associate_role SET user_id=#{userId},role_id=#{roleId}
+		WHERE 
+	</update>
+
+	<!--删除-->
+	<delete id="delete" parameterType="com.csdn.demo.sys.entity.UserAssociateRole">
+		 DELETE FROM user_associate_role WHERE 
+	</delete>
+
+	<!--分页查询-->
+	<select id="findByPage" parameterType="com.csdn.demo.sys.entity.QueryUserAssociateRole" resultMap="UserAssociateRoleMap">
+		SELECT user_id,role_id FROM user_associate_role
+		WHERE 1=1
+		<if test="userId!=null and userId!='' "  >
+		AND user_id=#{userId}
+		</if>
+		<if test="roleId!=null and roleId!='' "  >
+		AND role_id=#{roleId}
+		</if>
+		<if test="sort!= null">
+		order by ${sort} ${order}
+		</if>
+		limit #{offset},#{limit}
+	</select>
+
+	<!--统计-->
+	<select id="count" parameterType="com.csdn.demo.sys.entity.QueryUserAssociateRole" resultType="int">
+		SELECT count(*) FROM user_associate_role
+		WHERE 1=1
+		<if test="userId!=null and userId!='' ">
+		AND user_id=#{userId}
+		</if>
+		<if test="roleId!=null and roleId!='' ">
+		AND role_id=#{roleId}
+		</if>
+	</select>
+
+	<!--查询-->
+	<select id="query" parameterType="com.csdn.demo.sys.entity.QueryUserAssociateRole" resultMap="UserAssociateRoleMap">
+		SELECT user_id,role_id FROM user_associate_role
+		WHERE 1=1
+		<if test="userId!=null and userId!='' ">
+		AND user_id=#{userId}
+		</if>
+		<if test="roleId!=null and roleId!='' ">
+		AND role_id=#{roleId}
+		</if>
+		<if test="sort!= null">
+		order by ${sort} ${order}
+		</if>
+	</select>
+</mapper>

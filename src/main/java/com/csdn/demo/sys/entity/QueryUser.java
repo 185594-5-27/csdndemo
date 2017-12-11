@@ -21,7 +21,15 @@ public class QueryUser extends QueryBase {
 	private String state;
 	private String type;
 	private String lastLoginDate;
+	private OrgGroup orgGroup;
 
+	public OrgGroup getOrgGroup() {
+		return orgGroup;
+	}
+
+	public void setOrgGroup(OrgGroup orgGroup) {
+		this.orgGroup = orgGroup;
+	}
 
 	public String getLogin() {
 		return login;

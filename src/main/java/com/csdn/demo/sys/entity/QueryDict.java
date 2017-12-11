@@ -1,11 +1,22 @@
 package com.csdn.demo.sys.entity;
 
+
 import com.csdn.demo.common.base.entity.QueryBase;
 
 /**
  *@author linzf
  **/
 public class QueryDict extends QueryBase {
+
+	public QueryDict(){
+		super();
+	}
+
+	public QueryDict(String isLoad){
+		this.isLoad = isLoad;
+	}
+
+
 	private String code;
 	private String text;
 	private String type;

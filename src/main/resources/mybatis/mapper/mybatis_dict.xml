@@ -37,22 +37,22 @@
 	<select id="findByPage" parameterType="com.csdn.demo.sys.entity.QueryDict" resultMap="DictMap">
 		SELECT id,code,text,type,value,is_load FROM dict
 		WHERE 1=1
-		<if test="code!=null and code!='' "  >
-		AND code=#{code}
+		<if test="code!=null  and code!=''">
+			AND code like concat(#{code},'%')
 		</if>
-		<if test="text!=null and text!='' "  >
-		AND text=#{text}
+		<if test="text!=null and text!=''">
+			AND text like concat(#{text},'%')
 		</if>
-		<if test="type!=null and type!='' "  >
-		AND type=#{type}
+		<if test="type!=null  and type!=''">
+			AND type like concat(#{type},'%')
 		</if>
-		<if test="value!=null and value!='' "  >
-		AND value=#{value}
+		<if test="value!=null  and value!=''">
+			AND value like concat(#{value},'%')
 		</if>
-		<if test="isLoad!=null and isLoad!='' "  >
+		<if test="isLoad!=null  and isLoad!=''">
 		AND is_load=#{isLoad}
 		</if>
-		<if test="sort!= null">
+		<if test="sort!= null  and sort!=''">
 		order by ${sort} ${order}
 		</if>
 		limit #{offset},#{limit}
@@ -62,20 +62,23 @@
 	<select id="count" parameterType="com.csdn.demo.sys.entity.QueryDict" resultType="int">
 		SELECT count(*) FROM dict
 		WHERE 1=1
-		<if test="code!=null and code!='' ">
-		AND code=#{code}
+		<if test="code!=null  and code!=''">
+			AND code like concat(#{code},'%')
 		</if>
-		<if test="text!=null and text!='' ">
-		AND text=#{text}
+		<if test="text!=null and text!=''">
+			AND text like concat(#{text},'%')
 		</if>
-		<if test="type!=null and type!='' ">
-		AND type=#{type}
+		<if test="type!=null  and type!=''">
+			AND type like concat(#{type},'%')
 		</if>
-		<if test="value!=null and value!='' ">
-		AND value=#{value}
+		<if test="value!=null  and value!=''">
+			AND value like concat(#{value},'%')
 		</if>
-		<if test="isLoad!=null and isLoad!='' ">
-		AND is_load=#{isLoad}
+		<if test="isLoad!=null  and isLoad!=''">
+			AND is_load=#{isLoad}
+		</if>
+		<if test="sort!= null  and sort!=''">
+			order by ${sort} ${order}
 		</if>
 	</select>
 
@@ -83,23 +86,29 @@
 	<select id="query" parameterType="com.csdn.demo.sys.entity.QueryDict" resultMap="DictMap">
 		SELECT id,code,text,type,value,is_load FROM dict
 		WHERE 1=1
-		<if test="code!=null and code!='' ">
-		AND code=#{code}
+		<if test="code!=null  and code!=''">
+			AND code like concat(#{code},'%')
 		</if>
-		<if test="text!=null and text!='' ">
-		AND text=#{text}
+		<if test="text!=null and text!=''">
+			AND text like concat(#{text},'%')
 		</if>
-		<if test="type!=null and type!='' ">
-		AND type=#{type}
+		<if test="type!=null  and type!=''">
+			AND type like concat(#{type},'%')
 		</if>
-		<if test="value!=null and value!='' ">
-		AND value=#{value}
+		<if test="value!=null  and value!=''">
+			AND value like concat(#{value},'%')
 		</if>
-		<if test="isLoad!=null and isLoad!='' ">
-		AND is_load=#{isLoad}
+		<if test="isLoad!=null  and isLoad!=''">
+			AND is_load=#{isLoad}
 		</if>
-		<if test="sort!= null">
-		order by ${sort} ${order}
+		<if test="sort!= null  and sort!=''">
+			order by ${sort} ${order}
 		</if>
 	</select>
+
+	<!-- 加载所有的数据 -->
+	<select id="loadAll" parameterType="com.csdn.demo.sys.entity.QueryDict" resultMap="DictMap">
+	SELECT id,code,text,type,value,is_load FROM dict
+	</select>
+
 </mapper>
