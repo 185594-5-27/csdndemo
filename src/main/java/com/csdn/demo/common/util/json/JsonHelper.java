@@ -40,7 +40,7 @@ public class JsonHelper {
      * @param objectClass
      * @return
      */
-    public static <T> Collection<T> toList(Object object, Class<T> objectClass) {
+    public static <T> Collection<T> toList(String object, Class<T> objectClass) {
         JSONArray jsonArray = JSONArray.fromObject(object);
         return JSONArray.toCollection(jsonArray, objectClass);
     }

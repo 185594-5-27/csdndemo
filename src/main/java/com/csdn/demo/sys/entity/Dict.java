@@ -1,9 +1,14 @@
 package com.csdn.demo.sys.entity;
 
+import java.io.Serializable;
+
 /**
  *@author linzf
  **/
-public class Dict {
+public class Dict implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	private int id;
 	private String code;
 	private String text;
