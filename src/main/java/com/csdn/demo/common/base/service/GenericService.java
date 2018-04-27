@@ -19,6 +19,7 @@ public abstract class GenericService<T, Q extends QueryBase> {
 	 * 根据主键值获取对象
 	 * @param entity
 	 * */
+
 	public T get(T entity){
 		return getDao().get(entity);
 	}
