@@ -104,7 +104,7 @@ public abstract class GenericController<T, Q extends QueryBase> {
 	@RequestMapping(value = "/update",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Map<String,Object> update(T entity)  throws Exception{
-		boolean success  = getService().update(entity);
+		boolean success  = (getService().update(entity)!=null)?true:false;
 		Map<String,Object> result = new HashMap<String, Object>();
 		if(success==true){
 			result.put(SystemStaticConst.RESULT,SystemStaticConst.SUCCESS);

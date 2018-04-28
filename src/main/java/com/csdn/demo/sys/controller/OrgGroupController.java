@@ -77,7 +77,7 @@ public class OrgGroupController extends GenericController<OrgGroup,QueryOrgGroup
         update.setName(entity.getName());
         update.setGroupCode(entity.getGroupCode());
         update.setNum(entity.getNum());
-        boolean success = orgGroupService.update(update);
+        boolean success = orgGroupService.update(update)!=null?true:false;
         if(success){
             result.put(SystemStaticConst.RESULT,SystemStaticConst.SUCCESS);
             result.put(SystemStaticConst.MSG,"修改数据成功！");

@@ -10,5 +10,5 @@ import com.csdn.demo.sys.entity.QueryDict;
  **/
 public interface DictDao extends GenericDao<Dict, QueryDict> {
 
-	
+
 }

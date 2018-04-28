@@ -78,7 +78,7 @@ public class UserService extends GenericService<User, QueryUser> {
 	 * @throws Exception
 	 */
 	@Override
-	public boolean update(User entity) throws Exception {
+	public User update(User entity) throws Exception {
 		entity.packagingRoles(entity.getRoleArray());
 		entity.setAddress(entity.getProvince()+entity.getCity()+entity.getDistrict()+entity.getStreetAddress());
 		userAssociateRoleDao.removeUserRole(entity);

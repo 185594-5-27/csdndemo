@@ -19,7 +19,6 @@ public abstract class GenericService<T, Q extends QueryBase> {
 	 * 根据主键值获取对象
 	 * @param entity
 	 * */
-
 	public T get(T entity){
 		return getDao().get(entity);
 	}
@@ -55,8 +54,12 @@ public abstract class GenericService<T, Q extends QueryBase> {
 	 * @return boolean
 	 * @throws Exception
 	 * */
-	public boolean update(T entity) throws Exception{
-		return getDao().update(entity)>0;
+	public T update(T entity) throws Exception{
+		if(getDao().update(entity)>0){
+			return get(entity);
+		}else{
+			return null;
+		}
 	}
 
 	/**

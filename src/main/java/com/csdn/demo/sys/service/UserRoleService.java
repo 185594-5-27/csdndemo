@@ -73,7 +73,7 @@ public class UserRoleService extends GenericService<UserRole, QueryUserRole> {
 	}
 
 	@Override
-	public boolean update(UserRole entity) throws Exception {
+	public UserRole update(UserRole entity) throws Exception {
 		entity.packagingTrees(entity.getTreeArray());
 		List<Tree> treeList = entity.getTreeList();
 		roleAssociateTreeDao.removeTreeByRoleId(entity);
